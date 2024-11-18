@@ -11,7 +11,7 @@ public class UserRegisterModel
     public string Password { get; set; }
     [MinLength(1)]
     public string Email { get; set; }
-    public string? BirthDate { get; set; }
+    public DateTime? BirthDate { get; set; }
     public Gender Gender { get; set; }
     public string? PhoneNumber { get; set; }
 }
