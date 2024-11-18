@@ -1,7 +1,11 @@
+using System.Runtime.Serialization;
+
 namespace Playground2.Entity;
 
 public enum Gender
 {
-   Male,
-   Female
+    [EnumMember( Value = "Male" )]
+    Male,
+    [EnumMember( Value = "Female" )]
+    Female
 }

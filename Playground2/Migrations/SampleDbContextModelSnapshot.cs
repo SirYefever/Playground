@@ -21,31 +21,28 @@ namespace Playground2.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Playground2.Entity.AuthorDto", b =>
+            modelBuilder.Entity("Playground2.Entity.UserRegisterModel", b =>
                 {
                     b.Property<string>("FullName")
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<string>("BirthDate")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Created")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Likes")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Posts")
-                        .HasColumnType("integer");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
 
                     b.HasKey("FullName");
 
-                    b.ToTable("TestName");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
