@@ -31,6 +31,11 @@ builder.Services.AddCors(options =>
             
 builder.Services.AddSwaggerGen();
 
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .Build();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -16,7 +16,7 @@ public class UserConverters
         return user;
     }
 
-    public User UserRegisterModelToUser(UserRegisterModel model)
+    public static User UserRegisterModelToUser(UserRegisterModel2 model)
     {
         var user = new User();
         user.FullName = model.FullName;

@@ -1,8 +1,12 @@
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Playground2.Entity;
 using Playground2.Models;
+using Playground2.Temp;
 
 namespace Playground2.Temp;
 
@@ -16,50 +20,41 @@ public class UserService
     }
 
     [HttpPost("api/account/register")]
-    public async Task<ActionResult<TokenResponse>> AddUser(UserRegisterModel userRegModel)
+    public async Task<ActionResult<TokenResponse>> Register(UserRegisterModel2 model)
     {
-        _context.Users.Add(userRegModel);
-        await _context.SaveChangesAsync();
-        return token;
-    }
-    
-    [HttpPost("api/account/login")]
-    public Task<ActionResult<TokenResponse>> Login([FromBody] LoginCredentials creds)
-    {
-        bool itemExists = list.Any(item => item.PropertyName == desiredValue);
-
-        // Check user credentials (in a real application, you'd authenticate against a database)
-        if (_context.Users.Any(user => (user.Email == creds.Email && user.Password == creds.Password)))
+        bool registrationAllowed = !_context.Users.Any(user => user.Email == model.Email);
+        if (registrationAllowed)
         {
-            var tokenResponse = new TokenResponse();
-            tokenResponse.Token = new JwtSecurityTokenHandler().WriteToken(GenerateAccessToken(creds.Email));
-            return tokenResponse;
+            User user = Temp.UserConverters.UserRegisterModelToUser(model); 
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            TokenResponse token = new TokenResponse(GenerateAccessToken(model.Email));
+            return token;
         }
-        // unauthorized user
-        return Unauthorized("Invalid credentials");
+        return null;// TODO: Determine how to handle this case
     }
     
-    // TODO Decide where this function is supposed to be.
-    private JwtSecurityToken GenerateAccessToken(string userName)
+    private string GenerateAccessToken(string email)
     {
         // Create user claims
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, userName),
+            new Claim(ClaimTypes.Name, email),
             // Add additional claims as needed (e.g., roles, etc.)
         };
 
+        // TODO: Figure out where to take issuer and audience from 
         // Create a JWT
         var token = new JwtSecurityToken(
-            issuer: _configuration["JwtSettings:Issuer"],
-            audience: _configuration["JwtSettings:Audience"],
+            issuer: "localhost",
+            audience: "localhost",
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(1), // Token expiration time
-            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"])),
+            expires: DateTime.UtcNow.AddMinutes(1440), // Token expiration time
+            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey")),
                 SecurityAlgorithms.HmacSha256)
         );
 
-        return token;
+        return token.ToString();
     }
     
 }

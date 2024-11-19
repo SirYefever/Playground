@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Playground2.Entity;
+using Playground2.Temp;
 
 namespace Playground2.Models;
 
@@ -10,7 +11,7 @@ public partial class SampleDbContext: DbContext
         : base(options)
     {
     }
-    public virtual DbSet<UserRegisterModel> Users { get; set; }
+    public virtual DbSet<User> Users { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserRegisterModel>(entity => {

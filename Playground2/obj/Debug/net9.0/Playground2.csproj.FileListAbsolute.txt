@@ -156,3 +156,5 @@ E:\dev\Playground2\Playground2\obj\Debug\net9.0\refint\Playground2.dll
 E:\dev\Playground2\Playground2\obj\Debug\net9.0\Playground2.pdb
 E:\dev\Playground2\Playground2\obj\Debug\net9.0\Playground2.genruntimeconfig.cache
 E:\dev\Playground2\Playground2\obj\Debug\net9.0\ref\Playground2.dll
+E:\dev\Playground2\Playground2\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\dev\Playground2\Playground2\obj\Debug\net9.0\Playground2.sourcelink.json
