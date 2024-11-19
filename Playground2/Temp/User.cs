@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Playground2.Entity;
 
 namespace Playground2.Temp;
