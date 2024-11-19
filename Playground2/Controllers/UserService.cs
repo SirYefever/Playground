@@ -12,5 +12,5 @@ namespace Playground2.Temp;
 
 public class UserService
 {
-
+    // Empty because swagger does not see endpoints here (everything is in the UserController.cs)
 }

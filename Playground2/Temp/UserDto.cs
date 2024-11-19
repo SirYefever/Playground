@@ -4,6 +4,7 @@ namespace Playground2.Temp;
 
 public class UserDto
 {
+    //TODO: Dedicate weather we need database-attributes here
     public Guid Id { get; set; }
     public string FullName { get; set; }
     public string Password { get; set; }

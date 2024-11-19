@@ -5,6 +5,7 @@ namespace Playground2.Temp;
 
 public class User
 {
+    //TODO: Dedicate weather we need database-attributes here
     public Guid Id { get; set; }
     public string Token { get; set; }
     public string FullName { get; set; }
