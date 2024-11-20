@@ -6,10 +6,10 @@ public class UserConverters
 {
     public User UserDtoToUser(UserDto dto)
     {
+        //TODO: Dedicate what to do with password property
         var user = new User();
         user.FullName = dto.FullName;
         user.Email = dto.Email;
-        user.Password = dto.Password;
         user.BirthDate = dto.BirthDate;
         user.Gender = dto.Gender;
         user.PhoneNumber = dto.PhoneNumber;
@@ -34,7 +34,6 @@ public class UserConverters
         userDto.Id = user.Id;
         userDto.FullName = user.FullName;
         userDto.Email = user.Email;
-        userDto.Password = user.Password;
         userDto.BirthDate = user.BirthDate;
         userDto.Gender = user.Gender;
         userDto.PhoneNumber = user.PhoneNumber;
@@ -46,14 +45,13 @@ public class UserConverters
         var userDto = new UserDto();
         userDto.FullName = model.FullName;
         userDto.Email = model.Email;
-        userDto.Password = model.Password;
         userDto.BirthDate = model.BirthDate;
         userDto.Gender = model.Gender;
         userDto.PhoneNumber = model.PhoneNumber;
         return userDto;
     }
 
-    public UserRegisterModel UserToUserRegisterModelDto(User user)
+    public UserRegisterModel UserToUserRegisterModel(User user)
     {
         var model = new UserRegisterModel();
         model.FullName = user.FullName;
@@ -67,10 +65,10 @@ public class UserConverters
 
     public UserRegisterModel UserDtoToUserRegisterModelDto(UserDto dto)
     {
+        //TODO: Dedicate what to do with password property
         var model = new UserRegisterModel();
         model.FullName = dto.FullName;
         model.Email = dto.Email;
-        model.Password = dto.Password;
         model.BirthDate = dto.BirthDate;
         model.Gender = dto.Gender;
         model.PhoneNumber = dto.PhoneNumber;

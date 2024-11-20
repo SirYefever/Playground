@@ -31,6 +31,12 @@ public class UserController
         }
         TokenResponse token = new TokenResponse(GenerateAccessToken(model.Email));
         User user = Temp.UserConverters.UserRegisterModelToUser(model); 
+        
+        // TODO: Dedicate weather this is the way to validate property's length
+        // Validate fullName length and phoneNumberLength 
+        if (user.FullName.Length < 1 || user.PhoneNumber.Length < 1)
+            return null; // TODO: Determine how to handle this case (need swagger to return corresponding code)
+        
         user.Token = token.Token;
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
