@@ -1,6 +1,8 @@
 using Application;
 using Core.Models;
+using Core.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
+using Playground2.Temp;
 
 namespace API.Controllers;
 
@@ -13,8 +15,10 @@ public class UserController
     }
     // TODO: endpoint functions have to get Dto objects as input
     [HttpPost("api/account/register")]
-    public async Task<ActionResult<TokenResponse>> Register([FromBody]UserRegisterModel2 model)
+    public async Task<ActionResult<TokenResponse>> Register([FromBody]UserRegisterModel model)
     {
+        //Call service, do mapping, return
+        _userService
         // bool registrationAllowed = !_context.Users.Any(user => user.Email == model.Email);
         // if (!registrationAllowed)
         // {

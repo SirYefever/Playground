@@ -1,17 +1,19 @@
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Playground2.Entity;
-using Playground2.Temp;
 
-namespace Playground2.Models;
+namespace Persistence;
 
-public partial class SampleDbContext: DbContext
+public partial class MainDbContext: DbContext
 {
-    public SampleDbContext(DbContextOptions
-        <SampleDbContext> options)
+    public MainDbContext(DbContextOptions
+        <MainDbContext> options)
         : base(options)
     {
     }
     public virtual DbSet<User> Users { get; set; }
+    
+    //TODO: figure out what this function does
     // protected override void OnModelCreating(ModelBuilder modelBuilder)
     // {
     //     modelBuilder.Entity<User>(entity => {
@@ -19,5 +21,5 @@ public partial class SampleDbContext: DbContext
     //     });
     //     OnModelCreatingPartial(modelBuilder);
     // }
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    // partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

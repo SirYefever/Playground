@@ -1,12 +1,13 @@
 using Core.InterfaceContracts;
 using Core.Models;
+using Persistence;
 
 namespace Persistence;
 
 public class UserRepository: IUserStore
 {
-    private readonly SampleDbContext _context; 
-    public UserRepository(SampleDbContext context)
+    private readonly MainDbContext _context; 
+    public UserRepository(MainDbContext context)
     {
         _context = context;
     }
