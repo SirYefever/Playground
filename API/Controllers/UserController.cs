@@ -1,28 +1,13 @@
-using System.Diagnostics.Contracts;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Playground2.Entity;
-using Playground2.Models;
-using Playground2.Temp;
-using Playground2.Utils;
 
-namespace Playground2.Temp;
-[ApiController]
-[Route("api/[controller]")]
-public class UserService
+namespace API.Controllers;
+
+public class UserController
 {
-    private readonly SampleDbContext _context; 
-    public UserService(SampleDbContext context)
-    {
-        _context = context;
-    }
     [HttpPost("api/account/register")]
     public async Task<ActionResult<TokenResponse>> Register([FromBody]UserRegisterModel2 model)
     {
+        private readonly IUserService _userService;
         bool registrationAllowed = !_context.Users.Any(user => user.Email == model.Email);
         if (!registrationAllowed)
         {
