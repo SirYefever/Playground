@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace Playground2.Entity;
+namespace Core.Models;
 
 [DataContract]
 public enum Gender

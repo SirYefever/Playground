@@ -5,9 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Application;
 
-public class TokenService// TODO: find out weather there is a need to make an interface for this class 
+public class TokenService: ITokenGenerator// TODO: find out weather there is a need to make an interface for this class 
 {
-    public static string GenerateAccessToken(string email)
+    public string GenerateToken(string email)
     {
         // Create user claims
         var claims = new List<Claim>

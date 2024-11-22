@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Playground2.Temp;
+namespace API.Dto;
 
 public class LoginCredentials
 {

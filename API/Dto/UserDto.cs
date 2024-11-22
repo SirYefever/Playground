@@ -1,6 +1,5 @@
-using Playground2.Entity;
-
-namespace Playground2.Temp;
+using Core.Models;
+namespace API.Dto;
 
 public class UserDto
 {

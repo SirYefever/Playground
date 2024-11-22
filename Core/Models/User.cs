@@ -1,5 +1,3 @@
-using Playground2.Entity;
-
 namespace Core.Models;
 
 public class User

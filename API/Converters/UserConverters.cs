@@ -1,7 +1,7 @@
+using API.Dto;
 using Core.Models;
-using Playground2.Entity;
 
-namespace Playground2.Temp;
+namespace API.Converters;
 
 public class UserConverters
 {
@@ -29,7 +29,7 @@ public class UserConverters
         return user;
     }
 
-    public UserDto UserToUserDto(User user)
+    public static UserDto UserToUserDto(User user)
     {
         var userDto = new UserDto();
         userDto.Id = user.Id;

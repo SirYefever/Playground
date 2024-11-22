@@ -1,6 +1,5 @@
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using Playground2.Entity;
 
 namespace Persistence;
 

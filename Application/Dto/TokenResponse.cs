@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Playground2.Temp;
-
+namespace Application.Dto;
 public class TokenResponse
 {
     public TokenResponse(string token)
